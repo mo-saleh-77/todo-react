@@ -7,10 +7,10 @@ import { EditTodoForm } from "./EditTodoForm";
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = (todo) => {
+  const addTodo = (todo, description) => {
     setTodos([
       ...todos,
-      { id: uuidv4(), task: todo, completed: false, isEditing: false },
+      { id: uuidv4(), task: todo, completed: false, description: description,  isEditing: false },
     ]);
   }
 
@@ -32,10 +32,10 @@ export const TodoWrapper = () => {
     );
   }
 
-  const editTask = (task, id) => {
+  const editTask = (task,description, id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
+        todo.id === id ? { ...todo, task, description: description, isEditing: !todo.isEditing } : todo
       )
     );
   };
